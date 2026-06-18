@@ -5,3 +5,8 @@ build
 *.log
 ios
 android
+.claude
+.codex
+.cursor
+.impeccable
+PRODUCT.md

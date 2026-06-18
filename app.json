@@ -16,7 +16,10 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.straypaws.mobile"
+      "bundleIdentifier": "com.straypaws.mobile",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Stray Paws uses your location to show lost pet notices near you."
+      }
     },
     "android": {
       "package": "com.straypaws.mobile",
@@ -29,7 +32,13 @@
       "favicon": "./assets/icon.png"
     },
     "plugins": [
-      "expo-status-bar"
+      "expo-status-bar",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Stray Paws uses your location to show lost pet notices near you."
+        }
+      ]
     ]
   }
 }
