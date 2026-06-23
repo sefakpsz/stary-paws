@@ -1,12 +1,12 @@
 import type { AdoptionPet, HelpLocation, Language, LostPetNotice } from '../types/pet';
 
-interface MockData {
+export interface AppData {
   lostPetNotices: LostPetNotice[];
   helpLocations: HelpLocation[];
   adoptionPets: AdoptionPet[];
 }
 
-export const mockDataByLanguage: Record<Language, MockData> = {
+export const mockDataByLanguage: Record<Language, AppData> = {
   tr: {
     lostPetNotices: [
       {
@@ -198,3 +198,23 @@ export const mockDataByLanguage: Record<Language, MockData> = {
     ],
   },
 };
+
+export function getMockAppData(language: Language): AppData {
+  const userContent = mockDataByLanguage.tr;
+  const structuredContent = mockDataByLanguage[language];
+
+  return {
+    lostPetNotices: userContent.lostPetNotices.map((item, index) => ({
+      ...item,
+      area: structuredContent.lostPetNotices[index]?.area ?? item.area,
+    })),
+    helpLocations: userContent.helpLocations.map((item, index) => ({
+      ...item,
+      area: structuredContent.helpLocations[index]?.area ?? item.area,
+    })),
+    adoptionPets: userContent.adoptionPets.map((item, index) => ({
+      ...item,
+      area: structuredContent.adoptionPets[index]?.area ?? item.area,
+    })),
+  };
+}
