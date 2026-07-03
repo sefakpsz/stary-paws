@@ -28,8 +28,10 @@ export interface ThemePalette {
   successBg: string;
   cat: string;
   dog: string;
-  pawOpacity: number;
+  pawTint: string;
 }
+
+export const pawWatermarkOpacity = 0.08;
 
 
 export const palette: Record<ThemeMode, ThemePalette> = {
@@ -51,7 +53,7 @@ export const palette: Record<ThemeMode, ThemePalette> = {
     successBg: "rgba(71, 116, 84, 0.15)",
     cat: "#df8ab4",
     dog: "#6d8e50",
-    pawOpacity: 1,
+    pawTint: "#477454",
   },
   dark: {
     bg: "#0d2b1b",
@@ -71,7 +73,7 @@ export const palette: Record<ThemeMode, ThemePalette> = {
     successBg: "rgba(130, 173, 118, 0.18)",
     cat: "#f1a1c5",
     dog: "#a9c979",
-    pawOpacity: 0.1,
+    pawTint: "#82ad76",
   },
 };
 
@@ -86,10 +88,11 @@ export function createStyles(theme: ThemePalette) {
       position: "absolute",
       width: 168,
       height: 168,
-      opacity: theme.pawOpacity,
+      opacity: pawWatermarkOpacity,
     },
     backgroundPawImage: {
       resizeMode: "contain",
+      tintColor: theme.pawTint,
     },
     content: {
       padding: 16,
