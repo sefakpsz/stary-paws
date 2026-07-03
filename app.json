@@ -38,7 +38,8 @@
         {
           "locationWhenInUsePermission": "Stray Paws uses your location to show lost pet notices near you."
         }
-      ]
+      ],
+      "expo-font"
     ]
   }
 }

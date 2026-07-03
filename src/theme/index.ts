@@ -1,5 +1,13 @@
 import { StyleSheet } from "react-native";
 
+export const fonts = {
+  display: "VarelaRound_400Regular",
+  regular: "NunitoSans_400Regular",
+  bold: "NunitoSans_700Bold",
+  extraBold: "NunitoSans_800ExtraBold",
+  black: "NunitoSans_900Black",
+};
+
 export type ThemeMode = "light" | "dark";
 
 export interface ThemePalette {
@@ -98,7 +106,7 @@ export function createStyles(theme: ThemePalette) {
     eyebrow: {
       color: theme.primary,
       fontSize: 12,
-      fontWeight: "900",
+      fontFamily: fonts.black,
       textTransform: "uppercase",
       marginBottom: 8,
     },
@@ -106,13 +114,14 @@ export function createStyles(theme: ThemePalette) {
       color: theme.text,
       fontSize: 30,
       lineHeight: 35,
-      fontWeight: "900",
+      fontFamily: fonts.display,
       marginBottom: 10,
     },
     bodyText: {
       color: theme.muted,
       fontSize: 15,
       lineHeight: 23,
+      fontFamily: fonts.regular,
     },
     actionRow: {
       flexDirection: "row",
@@ -146,7 +155,7 @@ export function createStyles(theme: ThemePalette) {
     },
     buttonText: {
       color: "#fffaf7",
-      fontWeight: "900",
+      fontFamily: fonts.black,
       marginLeft: 6,
       flexShrink: 1,
     },
@@ -167,14 +176,14 @@ export function createStyles(theme: ThemePalette) {
     activityTitle: {
       color: theme.text,
       fontSize: 18,
-      fontWeight: "900",
+      fontFamily: fonts.display,
       marginBottom: 4,
     },
     activityDescription: {
       color: theme.muted,
       fontSize: 13,
       lineHeight: 19,
-      fontWeight: "700",
+      fontFamily: fonts.bold,
     },
     activityRow: {
       minHeight: 72,
@@ -210,7 +219,7 @@ export function createStyles(theme: ThemePalette) {
     activityLabel: {
       color: theme.secondaryStrong,
       fontSize: 12,
-      fontWeight: "900",
+      fontFamily: fonts.black,
       marginBottom: 2,
     },
     activityLabelUrgent: {
@@ -219,13 +228,13 @@ export function createStyles(theme: ThemePalette) {
     activityItemTitle: {
       color: theme.text,
       fontSize: 16,
-      fontWeight: "900",
+      fontFamily: fonts.black,
     },
     activityDetail: {
       color: theme.muted,
       fontSize: 12,
       lineHeight: 17,
-      fontWeight: "700",
+      fontFamily: fonts.bold,
       marginTop: 2,
     },
     sectionHeader: {
@@ -237,7 +246,7 @@ export function createStyles(theme: ThemePalette) {
     sectionTitle: {
       color: theme.text,
       fontSize: 28,
-      fontWeight: "900",
+      fontFamily: fonts.display,
       marginBottom: 8,
     },
     cardStack: {
@@ -279,7 +288,7 @@ export function createStyles(theme: ThemePalette) {
     feedInsightLabel: {
       color: theme.secondaryStrong,
       fontSize: 12,
-      fontWeight: "900",
+      fontFamily: fonts.black,
       marginBottom: 2,
     },
     feedInsightLabelUrgent: {
@@ -288,14 +297,14 @@ export function createStyles(theme: ThemePalette) {
     feedInsightValue: {
       color: theme.text,
       fontSize: 18,
-      fontWeight: "900",
+      fontFamily: fonts.black,
       marginBottom: 2,
     },
     feedInsightDetail: {
       color: theme.muted,
       fontSize: 13,
       lineHeight: 18,
-      fontWeight: "700",
+      fontFamily: fonts.bold,
     },
     feedStatus: {
       minHeight: 44,
@@ -312,7 +321,7 @@ export function createStyles(theme: ThemePalette) {
       color: theme.muted,
       flex: 1,
       fontSize: 13,
-      fontWeight: "800",
+      fontFamily: fonts.extraBold,
       marginLeft: 8,
     },
     feedStatusAction: {
@@ -322,7 +331,7 @@ export function createStyles(theme: ThemePalette) {
     },
     feedStatusActionText: {
       color: theme.secondaryStrong,
-      fontWeight: "900",
+      fontFamily: fonts.black,
     },
     filterToggle: {
       minHeight: 48,
@@ -354,12 +363,12 @@ export function createStyles(theme: ThemePalette) {
     },
     filterToggleLabel: {
       color: theme.text,
-      fontWeight: "900",
+      fontFamily: fonts.black,
     },
     filterToggleBadge: {
       color: theme.secondaryStrong,
       fontSize: 12,
-      fontWeight: "800",
+      fontFamily: fonts.extraBold,
       marginTop: 2,
     },
     filterPanel: {
@@ -390,7 +399,7 @@ export function createStyles(theme: ThemePalette) {
     },
     filterLabel: {
       color: theme.text,
-      fontWeight: "900",
+      fontFamily: fonts.black,
       fontSize: 13,
       marginBottom: 8,
     },
@@ -416,7 +425,7 @@ export function createStyles(theme: ThemePalette) {
     },
     segmentText: {
       color: theme.muted,
-      fontWeight: "900",
+      fontFamily: fonts.black,
       fontSize: 12,
       marginLeft: 5,
       flexShrink: 1,
@@ -441,7 +450,7 @@ export function createStyles(theme: ThemePalette) {
     filterInput: {
       flex: 1,
       color: theme.text,
-      fontWeight: "800",
+      fontFamily: fonts.extraBold,
       paddingVertical: 10,
       paddingLeft: 8,
     },
@@ -455,7 +464,7 @@ export function createStyles(theme: ThemePalette) {
     },
     clearFiltersText: {
       color: theme.muted,
-      fontWeight: "800",
+      fontFamily: fonts.extraBold,
       fontSize: 12,
       marginLeft: 4,
     },
@@ -473,7 +482,7 @@ export function createStyles(theme: ThemePalette) {
     },
     currentLocationText: {
       color: theme.secondaryStrong,
-      fontWeight: "900",
+      fontFamily: fonts.black,
       marginLeft: 6,
     },
     suggestionList: {
@@ -495,7 +504,7 @@ export function createStyles(theme: ThemePalette) {
     },
     suggestionText: {
       color: theme.text,
-      fontWeight: "800",
+      fontFamily: fonts.extraBold,
       marginLeft: 8,
     },
     emptyState: {
@@ -509,7 +518,7 @@ export function createStyles(theme: ThemePalette) {
     },
     emptyText: {
       color: theme.muted,
-      fontWeight: "900",
+      fontFamily: fonts.black,
       textAlign: "center",
       marginTop: 8,
     },
@@ -543,13 +552,13 @@ export function createStyles(theme: ThemePalette) {
     cardMeta: {
       color: theme.muted,
       fontSize: 13,
-      fontWeight: "800",
+      fontFamily: fonts.extraBold,
       marginBottom: 6,
     },
     cardTitle: {
       color: theme.text,
       fontSize: 22,
-      fontWeight: "900",
+      fontFamily: fonts.display,
       marginBottom: 8,
       paddingRight: 42,
     },
@@ -559,6 +568,7 @@ export function createStyles(theme: ThemePalette) {
       lineHeight: 23,
       marginBottom: 12,
       paddingRight: 34,
+      fontFamily: fonts.regular,
     },
     metaLine: {
       color: theme.secondaryStrong,
@@ -568,13 +578,13 @@ export function createStyles(theme: ThemePalette) {
     },
     metaText: {
       color: theme.muted,
-      fontWeight: "800",
+      fontFamily: fonts.extraBold,
       marginLeft: 6,
       flex: 1,
     },
     contactText: {
       color: theme.text,
-      fontWeight: "900",
+      fontFamily: fonts.black,
       paddingRight: 44,
     },
     badge: {
@@ -593,7 +603,7 @@ export function createStyles(theme: ThemePalette) {
     },
     badgeText: {
       color: theme.secondaryStrong,
-      fontWeight: "900",
+      fontFamily: fonts.black,
       fontSize: 12,
     },
     badgeUrgentText: {
@@ -614,7 +624,7 @@ export function createStyles(theme: ThemePalette) {
     },
     settingsGroupTitle: {
       color: theme.muted,
-      fontWeight: "900",
+      fontFamily: fonts.black,
       fontSize: 12,
       textTransform: "uppercase",
       marginBottom: 10,
@@ -661,12 +671,12 @@ export function createStyles(theme: ThemePalette) {
     },
     settingsRowLabel: {
       color: theme.text,
-      fontWeight: "900",
+      fontFamily: fonts.black,
       fontSize: 14,
     },
     settingsRowValue: {
       color: theme.muted,
-      fontWeight: "700",
+      fontFamily: fonts.bold,
       fontSize: 12,
       marginTop: 2,
       flexShrink: 1,
@@ -694,7 +704,7 @@ export function createStyles(theme: ThemePalette) {
     },
     tabText: {
       color: theme.muted,
-      fontWeight: "800",
+      fontFamily: fonts.extraBold,
       fontSize: 11,
       marginTop: 3,
     },
@@ -753,12 +763,12 @@ export function createStyles(theme: ThemePalette) {
     },
     profileName: {
       color: theme.text,
-      fontWeight: "900",
+      fontFamily: fonts.black,
       fontSize: 15,
     },
     profileEmail: {
       color: theme.muted,
-      fontWeight: "700",
+      fontFamily: fonts.bold,
       marginTop: 2,
     },
     profileOptions: {
@@ -778,13 +788,13 @@ export function createStyles(theme: ThemePalette) {
     profileRowText: {
       flex: 1,
       color: theme.text,
-      fontWeight: "900",
+      fontFamily: fonts.black,
       marginLeft: 10,
     },
     modalTitle: {
       color: theme.text,
       fontSize: 24,
-      fontWeight: "900",
+      fontFamily: fonts.display,
       marginBottom: 8,
     },
     modalActions: {
@@ -801,13 +811,14 @@ export function createStyles(theme: ThemePalette) {
       color: theme.text,
       paddingHorizontal: 14,
       marginTop: 10,
+      fontFamily: fonts.regular,
     },
     formField: {
       marginTop: 12,
     },
     formLabel: {
       color: theme.text,
-      fontWeight: "900",
+      fontFamily: fonts.black,
       fontSize: 13,
       marginBottom: 6,
     },
@@ -817,13 +828,13 @@ export function createStyles(theme: ThemePalette) {
     },
     fieldError: {
       color: theme.danger,
-      fontWeight: "800",
+      fontFamily: fonts.extraBold,
       fontSize: 12,
       marginTop: 6,
     },
     formErrorSummary: {
       color: theme.danger,
-      fontWeight: "900",
+      fontFamily: fonts.black,
       marginTop: 12,
     },
     formSuccess: {
@@ -834,7 +845,7 @@ export function createStyles(theme: ThemePalette) {
       borderRadius: 14,
       paddingHorizontal: 12,
       paddingVertical: 10,
-      fontWeight: "900",
+      fontFamily: fonts.black,
       marginTop: 12,
     },
     textArea: {
