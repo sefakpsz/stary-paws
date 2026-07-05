@@ -36,6 +36,7 @@ export function LostScreen({
   const [kindFilter, setKindFilter] = useState<PetKindFilter>("all");
   const [locationQuery, setLocationQuery] = useState("");
   const [nameQuery, setNameQuery] = useState("");
+  const [currentLocationLabel, setCurrentLocationLabel] = useState("");
   const [isLocating, setLocating] = useState(false);
   const { resultsOpacity, resultsTranslateY, updateFilters } =
     useFilterAnimation(reduceMotion);
@@ -67,9 +68,9 @@ export function LostScreen({
       }
 
       updateFilters(() => {
+        setCurrentLocationLabel(location.label);
         setLocationQuery(location.query);
       });
-      Alert.alert(t.common.location, t.lost.locationApplied);
     } catch {
       Alert.alert(t.lost.locationErrorTitle, t.lost.locationError);
     } finally {
@@ -98,8 +99,20 @@ export function LostScreen({
         <FeedInsight
           icon="search-outline"
           label={t.lost.insightLabel}
-          value={`${results.length} ${t.lost.insightUnit}`}
-          compact
+          value={
+            currentLocationLabel
+              ? `${results.length} ${t.lost.insightUnit}`
+              : isLocating
+                ? t.lost.locationPending
+                : t.lost.locationAction
+          }
+          detail={
+            currentLocationLabel
+              ? t.lost.insightDetail.replace("{location}", currentLocationLabel)
+              : t.lost.insightPrompt
+          }
+          onPress={applyCurrentLocation}
+          loading={isLocating}
           styles={styles}
           theme={theme}
         />
@@ -115,8 +128,6 @@ export function LostScreen({
           }}
           onChangeLocation={setLocationQuery}
           onChangeName={setNameQuery}
-          onUseCurrentLocation={applyCurrentLocation}
-          isLocating={isLocating}
           onClose={() => setFiltersOpen(false)}
           hasActiveFilters={hasActiveFilters}
           onClear={() => {

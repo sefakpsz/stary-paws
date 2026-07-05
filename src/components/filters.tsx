@@ -12,8 +12,6 @@ export function LostFilters({
   onChangeKind,
   onChangeLocation,
   onChangeName,
-  onUseCurrentLocation,
-  isLocating,
   onClose,
   hasActiveFilters,
   onClear,
@@ -27,8 +25,6 @@ export function LostFilters({
   onChangeKind: (kind: PetKindFilter) => void;
   onChangeLocation: (value: string) => void;
   onChangeName: (value: string) => void;
-  onUseCurrentLocation: () => void;
-  isLocating: boolean;
   onClose: () => void;
   hasActiveFilters: boolean;
   onClear: () => void;
@@ -52,19 +48,6 @@ export function LostFilters({
         theme={theme}
         t={t}
       />
-      <Pressable
-        style={styles.currentLocationButton}
-        onPress={onUseCurrentLocation}
-        disabled={isLocating}
-        accessibilityRole="button"
-        accessibilityState={{ disabled: isLocating }}
-        accessibilityLabel={t.actions.useCurrentLocation}
-      >
-        <AppIcon name="navigate-outline" size={16} color={theme.secondaryStrong} />
-        <Text style={styles.currentLocationText}>
-          {isLocating ? t.lost.locationPending : t.actions.useCurrentLocation}
-        </Text>
-      </Pressable>
       <FilterInput
         label={t.filters.animalName}
         value={name}
