@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import type { AppStyles, Translation } from "../app/types";
+import { AppIcon } from "./PhosphorIcon";
 
 export function EmptyResults({
   styles,
@@ -11,7 +11,7 @@ export function EmptyResults({
 }) {
   return (
     <View style={styles.emptyState}>
-      <Ionicons
+      <AppIcon
         name="search-outline"
         size={22}
         color={styles.emptyText.color}

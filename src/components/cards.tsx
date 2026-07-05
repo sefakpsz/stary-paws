@@ -1,8 +1,8 @@
 import { type ReactNode } from "react";
 import { Image, Text, View } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import type { AdoptionPet, HelpLocation, LostPetNotice, PetKind } from "../types/pet";
 import type { AppStyles, Translation } from "../app/types";
+import { AppIcon } from "./PhosphorIcon";
 import type { ThemePalette } from "../theme";
 import { MetaLine } from "./ui";
 
@@ -157,7 +157,7 @@ export function PetCardFrame({
           { backgroundColor: kind === "cat" ? theme.cat : theme.dog },
         ]}
       >
-        <MaterialCommunityIcons
+        <AppIcon
           name={kind === "cat" ? "cat" : "dog"}
           color={theme.bgDeep}
           size={25}

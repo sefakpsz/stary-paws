@@ -1,21 +1,29 @@
 import {
-  NunitoSans_400Regular,
-  NunitoSans_700Bold,
-  NunitoSans_800ExtraBold,
-  NunitoSans_900Black,
-} from "@expo-google-fonts/nunito-sans";
-import { VarelaRound_400Regular } from "@expo-google-fonts/varela-round";
+  BarlowCondensed_600SemiBold,
+  BarlowCondensed_700Bold,
+  BarlowCondensed_800ExtraBold,
+  BarlowCondensed_900Black,
+} from "@expo-google-fonts/barlow-condensed";
+import { Caveat_600SemiBold } from "@expo-google-fonts/caveat";
+import {
+  ZillaSlab_400Regular,
+  ZillaSlab_600SemiBold,
+  ZillaSlab_700Bold,
+} from "@expo-google-fonts/zilla-slab";
 import { useFonts } from "expo-font";
 import { AppNavigator } from "./src/app/AppNavigator";
 import { AppProviders } from "./src/app/AppProviders";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    VarelaRound_400Regular,
-    NunitoSans_400Regular,
-    NunitoSans_700Bold,
-    NunitoSans_800ExtraBold,
-    NunitoSans_900Black,
+    BarlowCondensed_600SemiBold,
+    BarlowCondensed_700Bold,
+    BarlowCondensed_800ExtraBold,
+    BarlowCondensed_900Black,
+    ZillaSlab_400Regular,
+    ZillaSlab_600SemiBold,
+    ZillaSlab_700Bold,
+    Caveat_600SemiBold,
   });
 
   if (!fontsLoaded) {

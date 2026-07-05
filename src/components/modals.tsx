@@ -1,10 +1,10 @@
 import { type ReactNode, useEffect, useRef, useState } from "react";
 import { Alert, Animated, Easing, Modal, Pressable, Text, TextInput, View } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import type { AppStyles, CreateFormField, CreateType, IconName, Translation } from "../app/types";
 import type { ThemePalette } from "../theme";
 import { useReduceMotionPreference } from "../utils/accessibility";
 import { submitPost } from "../api/posts";
+import { AppIcon } from "./PhosphorIcon";
 import { MetaLine, MobileButton } from "./ui";
 
 export function AuthModal({
@@ -30,7 +30,7 @@ export function AuthModal({
       styles={styles}
     >
       <View style={styles.modalIcon}>
-        <Ionicons
+        <AppIcon
           name="shield-checkmark"
           size={28}
           color={theme.secondaryStrong}
@@ -307,7 +307,7 @@ export function ProfileModal({
     >
       <View style={styles.profileHeader}>
         <View style={styles.profileAvatar}>
-          <Ionicons name="person" size={28} color={theme.bgDeep} />
+          <AppIcon name="person" size={28} color={theme.bgDeep} />
         </View>
         <View style={styles.profileIdentity}>
           <Text style={styles.modalTitle}>{t.profile.title}</Text>
@@ -373,9 +373,9 @@ export function ProfileRow({
       accessibilityRole="button"
       accessibilityLabel={label}
     >
-      <Ionicons name={icon} size={18} color={theme.secondaryStrong} />
+      <AppIcon name={icon} size={18} color={theme.secondaryStrong} />
       <Text style={styles.profileRowText}>{label}</Text>
-      <Ionicons name="chevron-forward" size={18} color={theme.muted} />
+      <AppIcon name="chevron-forward" size={18} color={theme.muted} />
     </Pressable>
   );
 }

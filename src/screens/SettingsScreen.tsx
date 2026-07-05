@@ -1,6 +1,6 @@
 import { Pressable, Text, View } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import type { AppStyles, IconName, Translation } from "../app/types";
+import { AppIcon } from "../components/PhosphorIcon";
 import type { ThemeMode, ThemePalette } from "../theme";
 
 export function SettingsScreen({
@@ -43,7 +43,7 @@ export function SettingsScreen({
         <Text style={styles.settingsGroupTitle}>{t.settings.account}</Text>
         <View style={styles.settingsUserHeader}>
           <View style={styles.settingsAvatar}>
-            <Ionicons
+            <AppIcon
               name={isAuthenticated ? "person" : "person-outline"}
               size={24}
               color={theme.bgDeep}
@@ -134,13 +134,13 @@ export function SettingsRow({
       accessibilityLabel={`${label}, ${value}`}
     >
       <View style={styles.settingsIcon}>
-        <Ionicons name={icon} size={18} color={theme.secondaryStrong} />
+        <AppIcon name={icon} size={18} color={theme.secondaryStrong} />
       </View>
       <View style={styles.settingsRowContent}>
         <Text style={styles.settingsRowLabel}>{label}</Text>
         <Text style={styles.settingsRowValue}>{value}</Text>
       </View>
-      <Ionicons name="chevron-forward" size={18} color={theme.muted} />
+      <AppIcon name="chevron-forward" size={18} color={theme.muted} />
     </Pressable>
   );
 }

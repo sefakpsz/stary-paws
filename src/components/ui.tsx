@@ -1,9 +1,8 @@
 import { type ReactNode } from "react";
-import { ImageBackground, Pressable, StyleSheet, Text, View } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { Pressable, Text, View } from "react-native";
 import type { AppStyles, IconName } from "../app/types";
+import { AppIcon } from "./PhosphorIcon";
 import type { ThemePalette } from "../theme";
-import pawPattern from "../../assets/paw-pattern.png";
 
 export function MobileButton({
   label,
@@ -32,7 +31,7 @@ export function MobileButton({
       accessibilityRole="button"
       accessibilityLabel={label}
     >
-      <Ionicons
+      <AppIcon
         name={icon}
         color={
           secondary ? styles.buttonSecondaryText.color : styles.buttonText.color
@@ -78,8 +77,13 @@ export function ActivityRow({
       accessibilityRole="button"
       accessibilityLabel={`${label}: ${title}, ${detail}`}
     >
+      {urgent && (
+        <View style={[styles.pinDot, styles.pinDotUrgent]}>
+          <AppIcon name="paw" size={9} color={theme.surfaceStrong} />
+        </View>
+      )}
       <View style={[styles.activityIcon, urgent && styles.activityIconUrgent]}>
-        <Ionicons
+        <AppIcon
           name={icon}
           color={urgent ? theme.danger : theme.secondaryStrong}
           size={20}
@@ -94,7 +98,7 @@ export function ActivityRow({
         <Text style={styles.activityItemTitle}>{title}</Text>
         <Text style={styles.activityDetail}>{detail}</Text>
       </View>
-      <Ionicons name="chevron-forward" size={18} color={theme.muted} />
+      <AppIcon name="chevron-forward" size={18} color={theme.muted} />
     </Pressable>
   );
 }
@@ -112,35 +116,8 @@ export function MetaLine({
 }) {
   return (
     <View style={styles.metaLine}>
-      <Ionicons name={icon} size={16} color={theme.secondaryStrong} />
+      <AppIcon name={icon} size={16} color={theme.secondaryStrong} />
       <Text style={styles.metaText}>{label}</Text>
-    </View>
-  );
-}
-
-export function BackgroundPaws({
-  styles,
-}: {
-  styles: AppStyles;
-}) {
-  const paws = [
-    { top: 34, left: -42, transform: [{ rotate: "-18deg" }] },
-    { top: 120, right: -26, transform: [{ rotate: "22deg" }] },
-    { top: 286, left: 24, transform: [{ rotate: "16deg" }] },
-    { bottom: 170, right: 28, transform: [{ rotate: "-12deg" }] },
-    { bottom: 40, left: -16, transform: [{ rotate: "28deg" }] },
-  ];
-
-  return (
-    <View pointerEvents="none" style={StyleSheet.absoluteFill}>
-      {paws.map((style, index) => (
-        <ImageBackground
-          key={index}
-          source={pawPattern}
-          style={[styles.backgroundPaw, style]}
-          imageStyle={styles.backgroundPawImage}
-        />
-      ))}
     </View>
   );
 }

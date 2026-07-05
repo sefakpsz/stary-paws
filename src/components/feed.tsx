@@ -1,8 +1,8 @@
 import { type ReactNode, useEffect, useRef, useState } from "react";
 import { Animated, Easing, Pressable, Text, View } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import type { AppStyles, IconName, Translation } from "../app/types";
 import type { ThemePalette } from "../theme";
+import { AppIcon } from "./PhosphorIcon";
 import { MobileButton } from "./ui";
 
 export function FeedScreen({
@@ -136,7 +136,7 @@ export function FeedScreen({
           accessibilityLabel={t.actions.filters}
         >
           <View style={styles.filterToggleIcon}>
-            <Ionicons
+            <AppIcon
               name="options-outline"
               size={17}
               color={styles.filterToggleLabel.color}
@@ -148,7 +148,7 @@ export function FeedScreen({
               <Text style={styles.filterToggleBadge}>{t.filters.active}</Text>
             )}
           </View>
-          <Ionicons
+          <AppIcon
             name="chevron-forward"
             size={18}
             color={styles.filterToggleLabel.color}
@@ -190,7 +190,7 @@ export function FeedStatusNotice({
 
   return (
     <View style={styles.feedStatus}>
-      <Ionicons
+      <AppIcon
         name={errorMessage ? "cloud-offline-outline" : "sync-outline"}
         size={17}
         color={styles.feedStatusText.color}
@@ -240,7 +240,7 @@ export function FeedInsight({
       <View
         style={[styles.feedInsightIcon, urgent && styles.feedInsightIconUrgent]}
       >
-        <Ionicons
+        <AppIcon
           name={icon}
           size={20}
           color={urgent ? theme.danger : theme.secondaryStrong}
@@ -259,7 +259,7 @@ export function FeedInsight({
         {detail && <Text style={styles.feedInsightDetail}>{detail}</Text>}
       </View>
       {onPress && (
-        <Ionicons
+        <AppIcon
           name={loading ? "hourglass-outline" : "navigate-outline"}
           size={18}
           color={urgent ? theme.danger : theme.muted}

@@ -4,8 +4,8 @@ import type { IconName, PetKindFilter, TabKey, UrgencyFilter } from "../app/type
 export function getTabIcon(tab: TabKey, active: boolean): IconName {
   if (tab === "home") return active ? "home" : "home-outline";
   if (tab === "lost") return active ? "search" : "search-outline";
-  if (tab === "help") return active ? "heart" : "heart-outline";
-  if (tab === "adoption") return active ? "home" : "home-outline";
+  if (tab === "help") return active ? "first-aid" : "first-aid-outline";
+  if (tab === "adoption") return active ? "heart" : "heart-outline";
   if (tab === "settings") return active ? "settings" : "settings-outline";
   return active ? "home" : "home-outline";
 }

@@ -1,7 +1,7 @@
 import { type ReactNode } from "react";
 import { Pressable, ScrollView, Text, TextInput, View } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import type { AppStyles, IconName, PetKindFilter, Translation, UrgencyFilter } from "../app/types";
+import { AppIcon } from "./PhosphorIcon";
 import type { ThemePalette } from "../theme";
 import { getCitySuggestions, getDistrictSuggestions, parseLocationValue } from "../utils/locationSuggestions";
 
@@ -60,7 +60,7 @@ export function LostFilters({
         accessibilityState={{ disabled: isLocating }}
         accessibilityLabel={t.actions.useCurrentLocation}
       >
-        <Ionicons name="navigate-outline" size={16} color={theme.secondaryStrong} />
+        <AppIcon name="navigate-outline" size={16} color={theme.secondaryStrong} />
         <Text style={styles.currentLocationText}>
           {isLocating ? t.lost.locationPending : t.actions.useCurrentLocation}
         </Text>
@@ -206,7 +206,7 @@ export function ClearFiltersButton({
       accessibilityRole="button"
       accessibilityLabel={t.filters.clear}
     >
-      <Ionicons name="close-circle-outline" size={15} color={theme.muted} />
+      <AppIcon name="close-circle-outline" size={15} color={theme.muted} />
       <Text style={styles.clearFiltersText}>{t.filters.clear}</Text>
     </Pressable>
   );
@@ -234,7 +234,7 @@ export function FilterPanel({
         accessibilityLabel={t.actions.close}
         hitSlop={8}
       >
-        <Ionicons name="chevron-up" size={17} color={theme.muted} />
+        <AppIcon name="chevron-up" size={17} color={theme.muted} />
       </Pressable>
       {children}
     </View>
@@ -341,7 +341,7 @@ export function UrgencyFilterControl({
               accessibilityLabel={option.label}
               accessibilityState={{ selected: isActive }}
             >
-              <Ionicons
+              <AppIcon
                 name={option.icon}
                 size={15}
                 color={isActive ? theme.text : theme.muted}
@@ -469,7 +469,7 @@ export function SuggestionList({
           accessibilityRole="button"
           accessibilityLabel={suggestion}
         >
-          <Ionicons name={icon} size={15} color={theme.secondaryStrong} />
+          <AppIcon name={icon} size={15} color={theme.secondaryStrong} />
           <Text style={styles.suggestionText}>{suggestion}</Text>
         </Pressable>
       ))}
@@ -498,7 +498,7 @@ export function FilterInput({
     <View style={styles.filterGroup}>
       <Text style={styles.filterLabel}>{label}</Text>
       <View style={styles.filterInputWrap}>
-        <Ionicons name={icon} size={17} color={theme.secondaryStrong} />
+        <AppIcon name={icon} size={17} color={theme.secondaryStrong} />
         <TextInput
           value={value}
           onChangeText={onChangeText}

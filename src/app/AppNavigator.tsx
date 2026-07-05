@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { Animated, ScrollView } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { AppModals } from "../components/AppModals";
-import { BackgroundPaws } from "../components/ui";
 import { useAppData } from "../hooks/useAppData";
 import { useAppLanguage } from "../hooks/useAppLanguage";
 import { useAppTheme } from "../hooks/useAppTheme";
@@ -15,6 +15,7 @@ import { LostScreen } from "../screens/LostScreen";
 import { SettingsScreen } from "../screens/SettingsScreen";
 
 export function AppNavigator() {
+  const insets = useSafeAreaInsets();
   const { language, languageLabel, languageOpacity, t, switchLanguage } =
     useAppLanguage();
   const { styles, theme, themeLabel, themeMode, themeOpacity, switchTheme } =
@@ -121,10 +122,12 @@ export function AppNavigator() {
   return (
     <Animated.View style={[styles.root, { opacity: themeOpacity }]}>
       <StatusBar style={themeMode === "dark" ? "light" : "dark"} />
-      <BackgroundPaws styles={styles} />
 
       <ScrollView
-        contentContainerStyle={styles.content}
+        contentContainerStyle={[
+          styles.content,
+          { paddingTop: 16 + insets.top, paddingBottom: 96 + insets.bottom },
+        ]}
         showsVerticalScrollIndicator={false}
       >
         <Animated.View
@@ -143,6 +146,7 @@ export function AppNavigator() {
         styles={styles}
         theme={theme}
         t={t}
+        bottomInset={insets.bottom}
       />
 
       <AppModals onPostSubmitted={reload} />

@@ -1,5 +1,6 @@
 import { Text, View } from "react-native";
 import type { CreateType, TabKey, Translation, AppStyles } from "../app/types";
+import { AppIcon } from "../components/PhosphorIcon";
 import type { ThemePalette } from "../theme";
 import { ActivityRow, MobileButton } from "../components/ui";
 import type { AppData } from "../api/mockData";
@@ -35,6 +36,9 @@ export function HomeScreen({
   return (
     <View>
       <View style={styles.heroCard}>
+        <View style={styles.pinDot}>
+          <AppIcon name="paw" size={9} color={theme.surfaceStrong} />
+        </View>
         <Text style={styles.eyebrow}>{t.home.eyebrow}</Text>
         <Text style={styles.heroTitle}>{t.home.title}</Text>
         <Text style={styles.bodyText}>{t.home.description}</Text>

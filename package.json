@@ -11,17 +11,20 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@expo-google-fonts/nunito-sans": "^0.4.2",
-    "@expo-google-fonts/varela-round": "^0.4.1",
-    "@expo/vector-icons": "^15.0.3",
-    "expo": "~56.0.0",
+    "@expo-google-fonts/barlow-condensed": "^0.4.1",
+    "@expo-google-fonts/caveat": "^0.4.2",
+    "@expo-google-fonts/zilla-slab": "^0.4.1",
+    "expo": "~56.0.14",
     "expo-font": "~56.0.7",
     "expo-localization": "^56.0.6",
-    "expo-location": "^56.0.18",
+    "expo-location": "~56.0.19",
     "expo-status-bar": "~56.0.4",
+    "phosphor-react-native": "^3.0.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-native": "0.85.3",
+    "react-native-safe-area-context": "~5.7.0",
+    "react-native-svg": "15.15.4",
     "react-native-web": "^0.21.2"
   },
   "devDependencies": {
