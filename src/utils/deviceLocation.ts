@@ -4,11 +4,7 @@ export function formatDeviceLocationQuery(place?: Location.LocationGeocodedAddre
   if (!place) return "";
 
   const city = place.city || place.region || place.subregion || "";
-  const district =
-    place.district ||
-    place.subregion ||
-    place.name ||
-    "";
+  const district = place.district || "";
 
   return [city, district]
     .map((part) => part.trim())

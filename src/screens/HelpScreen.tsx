@@ -118,7 +118,7 @@ export function HelpScreen({
               : t.help.insightPrompt
           }
           onPress={applyCurrentLocation}
-          urgent
+          urgent={Boolean(currentLocationQuery) && nearbyUrgentCount > 0}
           loading={isLocating}
           styles={styles}
           theme={theme}

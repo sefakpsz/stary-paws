@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
-import { Animated, ScrollView } from "react-native";
+import { Animated, ScrollView, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import type { TabKey } from "./types";
 import { AppModals } from "../components/AppModals";
 import { useAppData } from "../hooks/useAppData";
 import { useAppLanguage } from "../hooks/useAppLanguage";
@@ -36,88 +37,11 @@ export function AppNavigator() {
   } = useScreenTransition();
   const { data, errorMessage, isLoading, reload } = useAppData(language);
 
-  const renderScreen = () => {
-    if (activeTab === "home") {
-      return (
-        <HomeScreen
-          data={data}
-          styles={styles}
-          theme={theme}
-          t={t}
-          errorMessage={errorMessage}
-          isLoading={isLoading}
-          onOpenTab={switchTab}
-          onCreate={requestCreate}
-          onRetry={reload}
-        />
-      );
-    }
-
-    if (activeTab === "lost") {
-      return (
-        <LostScreen
-          notices={data.lostPetNotices}
-          styles={styles}
-          theme={theme}
-          t={t}
-          errorMessage={errorMessage}
-          isLoading={isLoading}
-          reduceMotion={reduceMotion}
-          onCreate={() => requestCreate("lost")}
-          onRetry={reload}
-        />
-      );
-    }
-
-    if (activeTab === "help") {
-      return (
-        <HelpScreen
-          locations={data.helpLocations}
-          styles={styles}
-          theme={theme}
-          t={t}
-          errorMessage={errorMessage}
-          isLoading={isLoading}
-          reduceMotion={reduceMotion}
-          onCreate={() => requestCreate("help")}
-          onRetry={reload}
-        />
-      );
-    }
-
-    if (activeTab === "adoption") {
-      return (
-        <AdoptionScreen
-          pets={data.adoptionPets}
-          styles={styles}
-          theme={theme}
-          t={t}
-          errorMessage={errorMessage}
-          isLoading={isLoading}
-          reduceMotion={reduceMotion}
-          onCreate={() => requestCreate("adoption")}
-          onRetry={reload}
-        />
-      );
-    }
-
-    return (
-      <SettingsScreen
-        styles={styles}
-        theme={theme}
-        t={t}
-        themeMode={themeMode}
-        languageLabel={languageLabel}
-        themeLabel={themeLabel}
-        isAuthenticated={isAuthenticated}
-        onToggleLanguage={switchLanguage}
-        onToggleTheme={switchTheme}
-        onOpenAuth={openAuth}
-        onOpenProfile={openProfile}
-        onSignOut={signOut}
-      />
-    );
-  };
+  // Every tab stays mounted and is only hidden with `display: none` (rather
+  // than conditionally rendered) so switching tabs never resets a screen's
+  // local state, like open filters or search results.
+  const hiddenUnless = (tab: TabKey) =>
+    activeTab === tab ? undefined : { display: "none" as const };
 
   return (
     <Animated.View style={[styles.root, { opacity: themeOpacity }]}>
@@ -136,7 +60,74 @@ export function AppNavigator() {
             transform: [{ translateY: screenTranslateY }],
           }}
         >
-          {renderScreen()}
+          <View style={hiddenUnless("home")}>
+            <HomeScreen
+              data={data}
+              styles={styles}
+              theme={theme}
+              t={t}
+              errorMessage={errorMessage}
+              isLoading={isLoading}
+              onOpenTab={switchTab}
+              onCreate={requestCreate}
+              onRetry={reload}
+            />
+          </View>
+          <View style={hiddenUnless("lost")}>
+            <LostScreen
+              notices={data.lostPetNotices}
+              styles={styles}
+              theme={theme}
+              t={t}
+              errorMessage={errorMessage}
+              isLoading={isLoading}
+              reduceMotion={reduceMotion}
+              onCreate={() => requestCreate("lost")}
+              onRetry={reload}
+            />
+          </View>
+          <View style={hiddenUnless("help")}>
+            <HelpScreen
+              locations={data.helpLocations}
+              styles={styles}
+              theme={theme}
+              t={t}
+              errorMessage={errorMessage}
+              isLoading={isLoading}
+              reduceMotion={reduceMotion}
+              onCreate={() => requestCreate("help")}
+              onRetry={reload}
+            />
+          </View>
+          <View style={hiddenUnless("adoption")}>
+            <AdoptionScreen
+              pets={data.adoptionPets}
+              styles={styles}
+              theme={theme}
+              t={t}
+              errorMessage={errorMessage}
+              isLoading={isLoading}
+              reduceMotion={reduceMotion}
+              onCreate={() => requestCreate("adoption")}
+              onRetry={reload}
+            />
+          </View>
+          <View style={hiddenUnless("settings")}>
+            <SettingsScreen
+              styles={styles}
+              theme={theme}
+              t={t}
+              themeMode={themeMode}
+              languageLabel={languageLabel}
+              themeLabel={themeLabel}
+              isAuthenticated={isAuthenticated}
+              onToggleLanguage={switchLanguage}
+              onToggleTheme={switchTheme}
+              onOpenAuth={openAuth}
+              onOpenProfile={openProfile}
+              onSignOut={signOut}
+            />
+          </View>
         </Animated.View>
       </ScrollView>
 

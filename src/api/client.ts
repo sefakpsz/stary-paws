@@ -1,6 +1,6 @@
 type QueryValue = string | number | boolean | null | undefined;
 
-export const API_BASE_URL = "";
+export const API_BASE_URL = process.env.EXPO_PUBLIC_API_BASE_URL ?? "";
 
 export class ApiUnavailableError extends Error {
   constructor() {
