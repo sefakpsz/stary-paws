@@ -24,7 +24,7 @@ export function BottomTabs({
   bottomInset?: number;
 }) {
   return (
-    <View style={[styles.tabBar, { bottom: Math.max(6, bottomInset) }]}>
+    <View style={[styles.tabBar, { bottom: Math.max(6, Math.min(bottomInset, 18)) }]}>
       {tabs.map((tab) => {
         const isActive = tab === activeTab;
         return (

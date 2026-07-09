@@ -3,6 +3,7 @@ import { Animated, ScrollView, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import type { TabKey } from "./types";
 import { AppModals } from "../components/AppModals";
+import { BackgroundPaws } from "../components/ui";
 import { useAppData } from "../hooks/useAppData";
 import { useAppLanguage } from "../hooks/useAppLanguage";
 import { useAppTheme } from "../hooks/useAppTheme";
@@ -46,11 +47,12 @@ export function AppNavigator() {
   return (
     <Animated.View style={[styles.root, { opacity: themeOpacity }]}>
       <StatusBar style={themeMode === "dark" ? "light" : "dark"} />
+      <BackgroundPaws styles={styles} />
 
       <ScrollView
         contentContainerStyle={[
           styles.content,
-          { paddingTop: 16 + insets.top, paddingBottom: 96 + insets.bottom },
+          { paddingTop: 16 + insets.top, paddingBottom: 96 + Math.min(insets.bottom, 18) },
         ]}
         showsVerticalScrollIndicator={false}
       >

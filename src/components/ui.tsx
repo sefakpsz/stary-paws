@@ -1,8 +1,32 @@
 import { type ReactNode } from "react";
-import { Pressable, Text, View } from "react-native";
+import { ImageBackground, Pressable, StyleSheet, Text, View } from "react-native";
 import type { AppStyles, IconName } from "../app/types";
 import { AppIcon } from "./PhosphorIcon";
 import type { ThemePalette } from "../theme";
+import pawPattern from "../../assets/paw-pattern.png";
+
+export function BackgroundPaws({ styles }: { styles: AppStyles }) {
+  const paws = [
+    { top: 34, left: -42, transform: [{ rotate: "-18deg" }] },
+    { top: 120, right: -26, transform: [{ rotate: "22deg" }] },
+    { top: 286, left: 24, transform: [{ rotate: "16deg" }] },
+    { bottom: 170, right: 28, transform: [{ rotate: "-12deg" }] },
+    { bottom: 40, left: -16, transform: [{ rotate: "28deg" }] },
+  ];
+
+  return (
+    <View pointerEvents="none" style={StyleSheet.absoluteFill}>
+      {paws.map((style, index) => (
+        <ImageBackground
+          key={index}
+          source={pawPattern}
+          style={[styles.backgroundPaw, style]}
+          imageStyle={styles.backgroundPawImage}
+        />
+      ))}
+    </View>
+  );
+}
 
 export function MobileButton({
   label,

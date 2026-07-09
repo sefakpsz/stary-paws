@@ -29,28 +29,31 @@ export interface ThemePalette {
   successBg: string;
   cat: string;
   dog: string;
+  pawTint: string;
 }
 
+export const pawWatermarkOpacity = 0.08;
 
 export const palette: Record<ThemeMode, ThemePalette> = {
   light: {
-    bg: "#dee3dc",
-    bgDeep: "#d9cfae",
-    surface: "rgba(250, 248, 245, 0.97)",
-    surfaceStrong: "#fbfaf9",
-    text: "#3a2e22",
-    muted: "#6b5f4f",
-    border: "rgba(58, 45, 26, 0.18)",
-    primary: "#b5401c",
-    secondary: "#3f6b4a",
-    secondaryStrong: "#20402b",
-    accent: "#c99a35",
-    danger: "#9c2a10",
-    dangerBg: "rgba(156, 42, 16, 0.13)",
-    success: "#20402b",
-    successBg: "rgba(63, 107, 74, 0.15)",
-    cat: "#a85c82",
-    dog: "#5f7a3f",
+    bg: "#edf2df",
+    bgDeep: "#cbd9bc",
+    surface: "rgba(255, 252, 243, 0.94)",
+    surfaceStrong: "#fffaf0",
+    text: "#28342a",
+    muted: "#687060",
+    border: "rgba(65, 82, 56, 0.16)",
+    primary: "#a94f31",
+    secondary: "#477454",
+    secondaryStrong: "#254c35",
+    accent: "#d8a13a",
+    danger: "#9f3030",
+    dangerBg: "rgba(159, 48, 48, 0.13)",
+    success: "#254c35",
+    successBg: "rgba(71, 116, 84, 0.15)",
+    cat: "#df8ab4",
+    dog: "#6d8e50",
+    pawTint: "#477454",
   },
   dark: {
     bg: "#11271d",
@@ -70,6 +73,7 @@ export const palette: Record<ThemeMode, ThemePalette> = {
     successBg: "rgba(127, 168, 127, 0.18)",
     cat: "#d888ab",
     dog: "#9bc078",
+    pawTint: "#82ad76",
   },
 };
 
@@ -79,6 +83,16 @@ export function createStyles(theme: ThemePalette) {
     root: {
       flex: 1,
       backgroundColor: theme.bg,
+    },
+    backgroundPaw: {
+      position: "absolute",
+      width: 168,
+      height: 168,
+      opacity: pawWatermarkOpacity,
+    },
+    backgroundPawImage: {
+      resizeMode: "contain",
+      tintColor: theme.pawTint,
     },
     content: {
       paddingHorizontal: 16,
